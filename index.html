@@ -1,204 +1,120 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>InAppBrowser.removeEventListener Example</title>
+<html> 
+<head> 
+<meta charset="UTF-8"> 
+<title>Untitled Document</title> 
+<link href="jquery-mobile/jquery.mobile.theme-1.3.0.min.css" rel="stylesheet" type="text/css"> 
+<link href="jquery-mobile/jquery.mobile.structure-1.3.0.min.css" rel="stylesheet" type="text/css"> 
+<script src="phonegap.js" type="text/javascript"></script>
+<script src="jquery-mobile/jquery-1.8.3.min.js" type="text/javascript"></script> 
+<script src="jquery-mobile/jquery.mobile-1.3.0.min.js" type="text/javascript"></script> 
+</head> 
 
-    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-	<script type="text/javascript" src="js/Calendar.js"></script>
-	<script type="text/javascript" src="Calendar.js"></script>
-    <script type="text/javascript" charset="utf-8">
+<body> 
+<div data-role="page" id="mainPage"> 
+<div data-role="header"> 
+<h3>Social SMC</h3> 
+</div> 
+<div data-role= "content"> 
+<div class="ui-grid-a"> 
+<div class="ui-block-a"><a href="#aboutsmcpage"><img src="icons/240x300-loyola.png" width="150" height="200" alt=""/></a></div> 
+<div class="ui-block-b"><a href="#socialsmcpage"><img src="icons/boarderfreesocialsmc240x300.png" width="150" height="200" alt=""/></a></div> 
+</div> 
+<div class="ui-grid-b"> 
+<div class="ui-block-a"><img src="smc-smiles/1.png" width="100" height="200" alt=""/></div> 
+<div class="ui-block-b"><img src="smc-smiles/2.png" width="100" height="200" alt=""/></div> 
+<div class="ui-block-c"><img src="smc-smiles/3.png" width="100" height="200" alt=""/></div> 
+<div class="ui-block-a"><img src="smc-smiles/4.png" width="100" height="200" alt=""/></div> 
+<div class="ui-block-b"><img src="smc-smiles/5.png" width="100" height="200" alt=""/></div> 
+<div class="ui-block-c"><img src="smc-smiles/6.png" width="100" height="200" alt=""/></div> 
+<div class="ui-block-a"><img src="smc-smiles/7.png" width="100" height="200" alt=""/></div> 
+<div class="ui-block-b"><img src="smc-smiles/8.png" width="100" height="200" alt=""/></div> 
+<div class="ui-block-c"><img src="smc-smiles/9.png" width="100" height="200" alt=""/></div> 
+</div> 
 
-    // Wait for device API libraries to load
-    //
-	
-	document.addEventListener("deviceready", onDeviceReady, false);
-	document.removeEventListener("backbutton",onBackButton, false);
-	
-	var startDate = new Date(2014,8,15,18,0,0,0,0); // beware: month 0 = january, 11 = december
-	var endDate = new Date(2014,8,19,19,0,0,0,0);
-	var title = "My nice event";
-	var location = "Home";
-	var notes = "Some notes about this event.";
-	var success = function(message) { alert("Success: " + JSON.stringify(message)); };
-	var error = function(message) { alert("Error: " + message); };
-	
-	// device APIs are available
-    //
-    function onDeviceReady() {
-         alert("device ready");
-		 setInterval(function(){alert("Hello")},3000);
-		 setInterval(function(){console.log("Hello")},3000);
-		 pictureSource=navigator.camera.PictureSourceType;
-        destinationType=navigator.camera.DestinationType;
-    }
-    
-	// Global InAppBrowser reference
-    var iabRef = null;
+</div> 
+<div data-role="footer"> 
+<h4>Tap logos to connect!</h4> 
+</div> 
+</div> 
+<div data-role="page" id="aboutsmcpage"> 
+<div data-role="header"> 
+<h1>About SMC</h1> 
+</div> 
+<div data-role="content"> 
+<div data-role="collapsible-set"> 
+<div data-role="collapsible" data-collapsed="true"> 
+<h3>SMC Homepage</h3> 
+<p> 
 
-    function iabLoadStart(event) {
-        alert(event.type + ' - ' + event.url);
-    }
+<a href="#" onClick="window.open('http://css.loyno.edu/masscomm/',target='_system');">SMC Homepage</a></p> 
+</div> 
+<div data-role="collapsible" data-collapsed="true"> 
+<h3>SMC Faculty and Staff</h3> 
+<p><a href="#" onClick="window.open('http://css.loyno.edu/masscomm/bios/',target='_system');">SMC Faculty and Staff</a></p> 
+</div> 
+</div> 
+<a href="#mainPage" data-role="button" data-icon="home">Home</a> 
+</div> 
+<div data-role="footer"> 
+<h4>Footer</h4> 
+</div> 
+</div> 
+<div data-role="page" id="socialsmcpage"> 
+<div data-role="header"> 
+<h1>SocialSMC</h1> 
+</div> 
+<div data-role="content"> 
+<div data-role="collapsible-set"> 
+<div data-role="collapsible"> 
+<h3>Facebook</h3> 
+<p> 
 
-    function iabLoadStop(event) {
-        alert(event.type + ' - ' + event.url);
-    }
+<a href="#" onClick="window.open('http://www.facebook.com/loynomasscomm/',target='_system');">SMC Homepage</a></p> 
+</div> 
+<div data-role="collapsible" data-collapsed="true"> 
+<h3>Instagram</h3> 
+<p> 
 
-    function iabLoadError(event) {
-        alert(event.type + ' - ' + event.message);
-    }
+<a href="#" onClick="window.open('http://www.instagram.com/loynosmc',target='_system');">Instagram</a></p> 
+</div> 
+<div data-role="collapsible" data-collapsed="true"> 
+<h3>LinkedIn</h3> 
+<p> 
 
-    function iabClose(event) {
-         alert(event.type);
-         iabRef.removeEventListener('loadstart', iabLoadStart);
-         iabRef.removeEventListener('loadstop', iabLoadStop);
-         iabRef.removeEventListener('loaderror', iabLoadError);
-         iabRef.removeEventListener('exit', iabClose);
-    }
-	
-	function openBrowser(){
-		iabRef = window.open('https://www.facebook.com/', '_system', 'location=yes,closebuttoncaption=CloseApp');
-        iabRef.addEventListener('loadstart', iabLoadStart);
-        iabRef.addEventListener('loadstop', iabLoadStop);
-        iabRef.addEventListener('loaderror', iabLoadError);
-        iabRef.addEventListener('exit', iabClose);
-	}
-	
-	function openInAppBrowser(){
-		iabRef = window.open('https://www.facebook.com/', '_blank', 'location=yes,closebuttoncaption=CloseApp');
-        iabRef.addEventListener('loadstart', iabLoadStart);
-        iabRef.addEventListener('loadstop', iabLoadStop);
-        iabRef.addEventListener('loaderror', iabLoadError);
-        iabRef.addEventListener('exit', iabClose);
-	}
-	
-	function openWebIntent(){
-		alert("Web Intent");
-		var url= "";
-		window.plugins.webintent.onNewIntent(function(url) {
-			if(url !== "") {
-				// url is the url that was passed to onNewIntent
-				alert("success");
-			}
-			else{
-				alert("empty URL");
-			}
-		});
-	}
-	
-	function scanCode(){
-		cordova.plugins.barcodeScanner.scan(
-		  function (result) {
-			  alert("We got a barcode\n" +
-					"Result: " + result.text + "\n" +
-					"Format: " + result.format + "\n" +
-					"Cancelled: " + result.cancelled);
-		  }, 
-		  function (error) {
-			  alert("Scanning failed: " + error);
-		  }
-	   );
-	}
-	
-	function nextPage(){
-		window.open("indexAudioMedia.html");
-	}
-	
-	function openFB(){
-		window.open("indexFB.html");
-	}
-	
-	function capturePhoto() {
-      // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL });
-    }
-	
-	function onPhotoDataSuccess(imageData) {
-      // Uncomment to view the base64-encoded image data
-      // console.log(imageData);
+<a href="#" onClick="window.open('http://www.linkedin.com/groups/Loyola-University-New-Orleans-School-5155535',target='_system');">LinkedIn</a></p> 
+</div> 
+</div> 
+<div data-role="collapsible-set"> 
+<div data-role="collapsible"> 
+<h3>Pinterest</h3> 
+<p> 
 
-      // Get image handle
-      //
-      var smallImage = document.getElementById('smallImage');
+<a href="#" onClick="window.open('http://www.pinterest.com/loynosmc',target='_system');">Pinterest</a></p> 
+</div> 
+<div data-role="collapsible" data-collapsed="true"> 
+<h3>Tumblr</h3> 
+<p> 
 
-      // Unhide image elements
-      //
-      smallImage.style.display = 'block';
+<a href="#" onClick="window.open('http://wwww.loynosmc.tumblr.com',target='_system');">Tumblr</a></p> 
+</div> 
+<div data-role="collapsible" data-collapsed="true"> 
+<h3>Twitter</h3> 
+<p> 
 
-      // Show the captured photo
-      // The in-line CSS rules are used to resize the image
-      //
-      smallImage.src = "data:image/jpeg;base64," + imageData;
-    }
-	
-	function onFail(message) {
-      alert('Failed because: ' + message);
-    }
-	
-	function addCalendar(){
-		alert('Create Calendar event');
-		window.Calendar.createEvent(title, location, notes, startDate, endDate, 
-		function() {alert('success');}, 
-		function() {alert('fail');});
-	}
-	
-	function findMyContact(){
-		var options      = new ContactFindOptions();
-		options.filter   = "Bob";
-		options.multiple = true;
-		options.desiredFields = [navigator.contacts.fieldType.id];
-		var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
-        navigator.contacts.find( onContactSuccess, onContactError, fields, options);
-	}
-	
-	function onContactSuccess(contacts) {
-        alert('Found ' + contacts.length + ' contacts.');
-    }
-	
-	function onContactError(contactError) {
-        alert('onError!');
-    }
-	
-	function playLocalVideo(){
-		VideoPlayer.play("file:///android_asset/www/mov_bbb.mp4");
-	}
+<a href="#" onClick="window.open('http://twitter.com/loynosmc',target='_system');">Twitter</a></p> 
+</div> 
+</div> 
+<div data-role="collapsible-set"> 
+<div data-role="collapsible"> 
+<h3>YouTube</h3> 
+<p> 
 
-    </script>
-	<style type="text/css">
-		body{background-color:#d0e4fe;}
-		p{
-			color:red;
-			font-style:italic;	
-		}
-	</style>
-  </head>
-  <body>
-	<br>
-	<button onclick="openBrowser();">Open InappBrowser</button><br>
-	<button onclick="nextPage();">Next Page to Test InAppBrowser</button><br>
-	<button onclick="openFB();">open FaceBook Sign In Testpage </button><br>
-	<button onclick="openWebIntent();">Launch WebIntent</button><br>
-	<button onclick="window.plugins.insomnia.keepAwake()">keep awake</button><br>
-	<button onclick="window.plugins.insomnia.allowSleepAgain()">allow sleep again</button><br><br>
-	<a onclick="openInAppBrowser()" href="#">Open InappBrowser</a><br>
-	<a href="indexDownload2.html">Download Page</a><br>
-	<p>Testing in app browser and device ready with Hydration.</p>
-	<p>Now Ensuring that my CSS, HTML and JavaScript are updated by Hydration.</p>
-	<P>
-		<video width="320" height="240" controls webkit-playsinline>
-			<source src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-		</video>
-	</P>
-	<P>
-		<video width="320" height="240" controls webkit-playsinline>
-			<source src="mov_bbb.mp4" type="video/mp4">
-		</video>
-	</P>
-	<p><button onclick="scanCode();">Scan Code</button></p>
-	<p><button onclick="playLocalVideo();">Play a video hosted locally</button></p>
-	<p><button onclick="findMyContact()">Find Contact</button></p>
-	<p><button onclick="capturePhoto();">Take Picture</button></p>
-	<p><button onclick="addCalendar();">Add Event to Calendar</button></p>
-	<img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
-  </body>
-</html>
+<a href="#" onClick="window.open('http://www.youtube.com/user/LoynoSMC',target='_system');">YouTube</a></p> 
+</div> 
+</div> 
+<a href="#mainPage" data-role="button" data-icon="home">Home</a> 
+</div> 
+</div> 
+
+</body> 
+</html> 
