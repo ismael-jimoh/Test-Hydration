@@ -8,7 +8,12 @@
 
     // Wait for device API libraries to load
     //
-    document.addEventListener("deviceready", onDeviceReady, false);
+    function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+        document.addEventListener("online", onOnline, false);
+		document.addEventListener("offline", onOffline, false);
+    }
+
 
     // device APIs are available
     //
@@ -37,12 +42,37 @@
     function vibrate() {
         navigator.notification.vibrate(2000);
     }
+	
+	function checkConnection() {
+            var networkState = navigator.connection.type;
+
+            var states = {};
+            states[Connection.UNKNOWN]  = 'Unknown connection';
+            states[Connection.ETHERNET] = 'Ethernet connection';
+            states[Connection.WIFI]     = 'WiFi connection';
+            states[Connection.CELL_2G]  = 'Cell 2G connection';
+            states[Connection.CELL_3G]  = 'Cell 3G connection';
+            states[Connection.CELL_4G]  = 'Cell 4G connection';
+            states[Connection.CELL]     = 'Cell generic connection';
+            states[Connection.NONE]     = 'No network connection';
+
+            alert('Connection type: ' + states[networkState]);
+    }
+	
+	function onOffline() {
+		alert('Device is Offline');
+    }
+
+	function onOnline() {
+		alert('Device is Online');
+    }
 
     </script>
   </head>
-  <body>
+  <body onload="onLoad()">
     <p><a href="#" onclick="showAlert(); return false;">Show Alert</a></p>
     <p><a href="#" onclick="playBeep(); return false;">Play Beep</a></p>
     <p><a href="#" onclick="vibrate(); return false;">Vibrate</a></p>
+	<p><a href="#" onclick="checkConnection(); return false;">Check Connection</a></p>
   </body>
 </html>
